@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>Resize Logger</title>
+    <title>Resize Logger - Primary Window</title>
     <style>
       body { font-family: sans-serif; padding: 1em; }
       pre { white-space: pre-wrap; word-wrap: break-word; }
@@ -10,11 +10,12 @@
   </head>
   <body>
     <h1>Window Resize Info</h1>
+    <pre id="init"></pre><br />
     <pre id="output">Waiting for resize events...</pre>
 
     <script>
-      window.electronAPI.onResize((bounds) => {
-        document.getElementById('output').textContent = JSON.stringify(bounds, null, 2);
+      window.electronAPI.onResize((oldBounds, newBounds) => {
+        document.getElementById('output').textContent = `Old vs new bounds:\n${JSON.stringify(oldBounds)}\n${JSON.stringify(newBounds)}`;
       });
     </script>
   </body>
