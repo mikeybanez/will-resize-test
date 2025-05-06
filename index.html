@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Resize Logger</title>
+    <style>
+      body { font-family: sans-serif; padding: 1em; }
+      pre { white-space: pre-wrap; word-wrap: break-word; }
+    </style>
+  </head>
+  <body>
+    <h1>Window Resize Info</h1>
+    <pre id="output">Waiting for resize events...</pre>
+
+    <script>
+      window.electronAPI.onResize((bounds) => {
+        document.getElementById('output').textContent = JSON.stringify(bounds, null, 2);
+      });
+    </script>
+  </body>
+</html>
